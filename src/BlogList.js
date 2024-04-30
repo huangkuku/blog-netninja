@@ -1,9 +1,7 @@
 ﻿const BlogList = ({blogs, title, handleDelete}) => {  
-    // BlogList=(props)=>, props is a Obj, {blogs: Array(3), title: " All Blogs ~"} blogs裡的的array
-    // const blogs = props.blogs  // Array, [{...,id:1}, {...,id:2},{...,id:3}]
-    // const title= props.title  // title: All Blogs ~
+    // BlogList=(props)=>, props is a Obj, {blogs: Array(3), title: " All Blogs ~", handleDelete= (id)=>{...}} blogs裡的的array
     // const arr = [1,2] const str ="string" const mer = {arr,str} // console.log(mer) {arr: Array(2), str: 'string'}
-    
+
     return (  
         <div className="blog-list">
             <h2> { title } </h2>
