@@ -1,20 +1,23 @@
-﻿const Home = () => {
-    const handleClick = (e)=>{
-        console.log("Click me!", e)
-    }
-    const handleClicktwo = ()=>{
-        console.log("Click me only first render")
-    }
-    const handleClickAgain = (e)=>{
-        console.log(e.type, e.target, e.target.innerHTML)
-    }
-    const name ="lulu"
+﻿import { useState } from "react";
+
+const Home = () => {
+    const [blogs, setBlogs] = useState([
+        {title: 'My new website ~ ~', body: 'lorem ipsum...', author: 'mario', id: 1 },
+        {title: 'Welcome party !', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
+        {title: 'Web dev top tips ?', body: 'lorem ipsum...', author: 'mario', id: 3 }
+    ])
+    // const what = useState(1) ab= what[0] //1 setAb= what[1] // ƒ dispatchSetState(fiber, queue, action)...
+    // .map( ()=> () ) 為什麼" ()=> "的 右邊是"()" 因為要用template呈現 就像return () 
     return (  
         <div className="home">
-            <h2>Homepage</h2>
-            <button onClick={ handleClick }>Click me</button>
-            <button onClick={ handleClicktwo() }>Click me only first render</button>
-            <button onClick={(e)=>handleClickAgain(e)}> { name } </button>
+            {blogs.map((blog)=>(
+                <div className="blog-preview" key= { blog.id}>
+                    <h2>{ blog.title }</h2>
+                    <p>Written by { blog.author }</p>
+                </div>
+                
+            ))}
+            
         </div>
     );
 }
