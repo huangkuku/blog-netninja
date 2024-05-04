@@ -3,7 +3,7 @@
 const Create = () => {
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [author, setAuthor] = useState("")
+    const [author, setAuthor] = useState("yoshi")
 
     return ( 
         <div className="create">
