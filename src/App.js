@@ -3,6 +3,7 @@ import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Create from './Create';
 import BlogDetails from './BlogDetails';
+import NotFound from './NotFound';
 
 function App() {
   return (
@@ -14,11 +15,14 @@ function App() {
             <Route exact path="/">  {/* Home專屬的route (路由) 加個'exact',精確地 match 該路由位址* 如果沒加 輸入'/creat'會先match到'/'該路由位址*/}
               <Home />
             </Route>
-            <Route path="/create"> {/* create的路由 */}
+            <Route exact path="/create"> {/* create的路由 */}
               <Create />
             </Route>
-            <Route path="/blogs/:id"> {/* create的路由 */}
+            <Route exact path="/blogs/:id"> {/* create的路由 */}
               <BlogDetails />
+            </Route>
+            <Route path="*"> {/* "*" lock catch any other route 只要沒匹配上面任一路由 都會被這個路由'抓到',ex:http://.../csdhfi;oh*/}
+              <NotFound />
             </Route>
           </Switch>
         </div>
