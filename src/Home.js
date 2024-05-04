@@ -1,22 +1,19 @@
-﻿const Home = () => {
-    const handleClick = (e)=>{
-        console.log("Click me!", e)
-    }
-    const handleClicktwo = ()=>{
-        console.log("Click me only first render")
-    }
-    const handleClickAgain = (e)=>{
-        console.log(e.type, e.target, e.target.innerHTML)
-    }
-    const name ="lulu"
+﻿import BlogList from "./BlogList";
+import MemberList from "./MemberList";
+import useFetch from "./useFecth";
+
+
+const Home = () => {
+    const { isPending, error, data: blogs }= useFetch('http://localhost:8000/blogs') 
+    const { data: members }= useFetch('http://localhost:8000/members')
+
     return (  
         <div className="home">
-            <h2>Homepage</h2>
-            <button onClick={ handleClick }>Click me</button>
-            <button onClick={ handleClicktwo() }>Click me only first render</button>
-            <button onClick={(e)=>handleClickAgain(e)}> { name } </button>
+            { error && <div>{ error }</div> } {/* 一開始為null, 若有改變setError(error.message)，則執行右邊的code */}
+            { isPending && <p>Loading...</p> } {/* true, 執行&&右邊的code; 當fetch server完成時變成false,不執行&&右邊的() */}
+            { blogs && <BlogList blogs={ blogs }/> }
+            { members && <MemberList members={ members } title=" All members" /> }
         </div>
     );
-}
- 
+} 
 export default Home;
