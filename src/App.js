@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import Register from './Register';
+import MemberDetails from './MemberDetails';
 
 function App() {
   return (
@@ -20,6 +22,12 @@ function App() {
             </Route>
             <Route exact path="/blogs/:id"> {/* create的路由 */}
               <BlogDetails />
+            </Route>
+            <Route exact path="/register">
+              <Register />
+            </Route>
+            <Route exact path="/members/:id"> {/* create的路由 */}
+              <MemberDetails />
             </Route>
             <Route path="*"> {/* "*" lock catch any other route 只要沒匹配上面任一路由 都會被這個路由'抓到',ex:http://.../csdhfi;oh*/}
               <NotFound />
