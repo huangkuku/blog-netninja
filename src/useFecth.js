@@ -27,7 +27,7 @@ const useFetch = (url) => {  // useFetch 節省你寫isPending error 重複的co
         },1000)
     }, []) // [條件], re-render條件(跑useEffect()) 
 
-    return {data, isPending, error} // 使用 useFetch(), return 這些東西 可以是arr, Obj 
+    return { data, isPending, error } // 使用 useFetch(), return 這些東西 可以是arr, Obj 
 }
  
 export default useFetch;
